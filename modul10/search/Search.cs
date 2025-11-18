@@ -9,7 +9,12 @@
         /// <param name="tal">Det tal der skal findes.</param>
         /// <returns></returns>
         public static int FindNumberLinear(int[] array, int tal) {
-            // TODO: Implement!
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == tal)
+                    return i;
+            }
             return -1;
         }
         /// <summary>
@@ -19,7 +24,20 @@
         /// <param name="tal">Det tal der skal findes.</param>
         /// <returns></returns>
         public static int FindNumberBinary(int[] array, int tal) {
-            // TODO: Implement!
+            int min = 0;
+            int max = array.Length - 1;
+
+            while (min <= max)
+            {
+                int mid = (min + max) / 2;
+                if (tal == array[mid])
+                    return mid;
+                
+                if (tal < array[mid])
+                    max = mid - 1;
+                else
+                    min = mid + 1;
+            }
             return -1;
         }
 
@@ -44,8 +62,30 @@
         /// </summary>
         /// <param name="tal">Tallet der skal indsættes</param>
         /// <returns>En kopi af det sorterede array med det nye tal i.</returns>
-        public static int[] InsertSorted(int tal) {
-            // TODO: Implement!
+        public static int[] InsertSorted(int tal)
+        {
+            //tjekker først om der er plads til nyt tal
+            if (next >= sortedArray.Length)
+                return sortedArray;
+
+            int newIndex = 0;
+            
+            //sørger for vi kun kigger på tomme pladser og sammenholder værdien for vores tal og de eksisterende
+            while (newIndex < next && sortedArray[newIndex] < tal)
+            {
+                newIndex++;
+            }
+            
+            //sørger for at rykke alle relevante elementer i array en plads mod højre
+            for (int i = next; i > newIndex; i--) {
+                sortedArray[i] = sortedArray[i - 1];
+            }
+            
+            //indsætter det nye tal på det rigtige index 
+            sortedArray[newIndex] = tal;
+            
+            //tæller next op
+            next++;
             
             return sortedArray;
         }
