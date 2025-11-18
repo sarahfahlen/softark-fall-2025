@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace Sortering;
 
@@ -6,7 +7,7 @@ public class SortTester
 {
     public static void Run()
     {
-        int testSize = 100000;
+        int testSize = 1000000000;
         int Min = 0;
         int Max = 10000;
         Random randNum = new Random();

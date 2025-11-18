@@ -17,6 +17,11 @@ namespace Sortering.Tests
         public void TestInsertionSort()
         {
             int[] array = new int[] { 34, 18, 15, 45, 67, 11 };
+            //15, 18, 34,
+            //next = 15
+            //j = 0,
+            //found = false
+            //i = 2; i < 6, i++
             InsertionSort.Sort(array);
             CollectionAssert.AreEqual(new int[] { 11, 15, 18, 34, 45, 67}, array);
         }
